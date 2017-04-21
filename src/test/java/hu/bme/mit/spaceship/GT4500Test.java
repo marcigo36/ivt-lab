@@ -9,26 +9,43 @@ import org.junit.Test;
 public class GT4500Test {
 
   private GT4500 ship;
+  private TorpedoStore mts;
+  private TorpedoStore mts2;
 
   @Before
   public void init(){
-    this.ship = new GT4500();
+
+    mts = mock(TorpedoStore.class);
+    mts2 = mock(TorpedoStore.class);
+
+
+    this.ship = new GT4500(mts,mts2);
   }
 
   @Test
   public void fireTorpedos_Single_Success(){
     // Arrange
 
+    when(mts.fire(1)).thenReturn(true);
+    when(mts.isEmpty()).thenReturn(false);
+    when(mts.getNumberOfTorpedos()).thenReturn(1);
+
     // Act
     boolean result = ship.fireTorpedos(FiringMode.SINGLE);
 
     // Assert
-    assertEquals(true, result);
+    assertEquals(true, ship.fireTorpedos(FiringMode.SINGLE));
   }
 
   @Test
   public void fireTorpedos_All_Success(){
     // Arrange
+    when(mts.fire(1)).thenReturn(true);
+    when(mts.isEmpty()).thenReturn(false);
+    when(mts.getNumberOfTorpedos()).thenReturn(1);
+    when(mts2.fire(1)).thenReturn(true);
+    when(mts2.isEmpty()).thenReturn(false);
+    when(mts2.getNumberOfTorpedos()).thenReturn(1);
 
     // Act
     boolean result = ship.fireTorpedos(FiringMode.ALL);
