@@ -96,12 +96,12 @@ public class GT4500 implements SpaceShip {
     if(firingMode == FiringMode.SINGLE)
     {
       //no lasers
-      firingSuccess = false;
+      firingSuccess = true;
     }
     else if(firingMode == FiringMode.ALL)
     {
       //no lasrs
-      firingSuccess = false;
+      firingSuccess = true;
     }
 
 

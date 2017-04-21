@@ -52,4 +52,33 @@ public class GT4500Test {
     assertEquals(true, result);
   }
 
+  public void fireLasers_Single_Success(){
+    // Arrange
+
+    when(mts.fire(1)).thenReturn(true);
+    when(mts.isEmpty()).thenReturn(false);
+    when(mts.getNumberOfTorpedos()).thenReturn(1);
+
+
+    // Assert
+    assertEquals(true, ship.fireLasers(FiringMode.SINGLE));
+  }
+
+  @Test
+  public void fireLasers_All_Success(){
+    // Arrange
+    when(mts.fire(1)).thenReturn(true);
+    when(mts.isEmpty()).thenReturn(false);
+    when(mts.getNumberOfTorpedos()).thenReturn(1);
+    when(mts2.fire(1)).thenReturn(true);
+    when(mts2.isEmpty()).thenReturn(false);
+    when(mts2.getNumberOfTorpedos()).thenReturn(1);
+
+    // Act
+    boolean result = ship.fireLasers(FiringMode.ALL);
+
+    // Assert
+    assertEquals(true, result);
+  }
+
 }
