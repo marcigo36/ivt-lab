@@ -30,8 +30,6 @@ public class GT4500Test {
     when(mts.isEmpty()).thenReturn(false);
     when(mts.getNumberOfTorpedos()).thenReturn(1);
 
-    // Act
-    boolean result = ship.fireTorpedos(FiringMode.SINGLE);
 
     // Assert
     assertEquals(true, ship.fireTorpedos(FiringMode.SINGLE));
